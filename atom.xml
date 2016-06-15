@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-15T16:43:34.000Z</updated>
+  <updated>2016-06-15T18:32:17.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Sublime定制</title>
+    <link href="http://yoursite.com/2016/06/16/Sublime%E5%AE%9A%E5%88%B6/"/>
+    <id>http://yoursite.com/2016/06/16/Sublime定制/</id>
+    <published>2016-06-15T17:58:53.000Z</published>
+    <updated>2016-06-15T18:32:17.000Z</updated>
+    
+    <content type="html">&lt;p&gt; Sublime原生的markdown编辑插件MarkDown Editing并不友好。而Monokai extended插件支持对MarkDown进行语法高亮编辑，其安装方法如下：
+以下均在Mac OX系统下操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 Monokai extended插件
+cmd + shift + p调出control panel输入install package.然后 搜索Monokai extended安装插件&lt;/li&gt;
+&lt;li&gt;激活插件，并设置
+cmd + shift + p，输入&lt;code&gt;set syntax:markdown extended&lt;/code&gt;，然后在导航栏view --&amp;gt; Syntax --&amp;gt; Open all with current extension as… -&amp;gt; Markdown Extended&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; Sublime原生的markdown编辑插件MarkDown Editing并不友好。而Monokai extended插件支持对MarkDown进行语法高亮编辑，其安装方法如下：
+以下均在Mac OX系统下操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 Monokai exte
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Sublime" scheme="http://yoursite.com/tags/Sublime/"/>
+    
+  </entry>
+  
+  <entry>
     <title>意外</title>
     <link href="http://yoursite.com/2016/06/15/%E6%84%8F%E5%A4%96/"/>
     <id>http://yoursite.com/2016/06/15/意外/</id>
     <published>2016-06-15T15:59:56.000Z</published>
-    <updated>2016-06-15T16:43:34.000Z</updated>
+    <updated>2016-06-15T17:54:42.000Z</updated>
     
     <content type="html">&lt;p&gt; 每次编写markdwon文件总是在排版的问题上出点小的意外，这些意外更多是编辑不熟练导致。虽说从技术的角度将这没什么难度，但却耗费时间调整，本来不错的兴致却被这小的问题弄得一干二净！但文章终究还是要给别人看的，多少还是注意一点为好！&lt;/p&gt;
 &lt;h2 id=&quot;代码高亮显示&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#代码高亮显示&quot;&gt;¶&lt;/a&gt;代码高亮显示&lt;/h2&gt;
