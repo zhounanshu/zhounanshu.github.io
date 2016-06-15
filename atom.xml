@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Marvin&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-06-15T13:38:15.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Marvin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flask之旅</title>
+    <link href="http://yoursite.com/2016/06/11/Flask%E4%B9%8B%E6%97%85/"/>
+    <id>http://yoursite.com/2016/06/11/Flask之旅/</id>
+    <published>2016-06-11T11:35:37.000Z</published>
+    <updated>2016-06-15T13:38:15.000Z</updated>
+    
+    <content type="html">&lt;p&gt;  Flask是基于Werkzurg工具和jinja2模板引擎构建的轻Web框架, 据说Flask起源于2010年的愚人节玩笑，但是大家反响热烈，作者Armin Ronacher把它变成了一个真正的框架。对于python Web开发者，Flask开发框架容易入门，并且可以快速搭建网站解决问题。&lt;/p&gt;
+&lt;h2 id=&quot;flask示例&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#flask示例&quot;&gt;¶&lt;/a&gt;Flask示例:&lt;/h2&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/env python&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; flask &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; Flask&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; flask &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; request&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;app = Flask(__name__)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@app.route(&#39;/&#39;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    user_agent = request.headers.get(&lt;span class=&quot;string&quot;&gt;&#39;User-Agent&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;&amp;lt;p&amp;gt;Your brower is %s&amp;lt;/p&amp;gt;&#39;&lt;/span&gt; % user_agent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; __name__ == &lt;span class=&quot;string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    app.run(debug=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;渲染模板&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#渲染模板&quot;&gt;¶&lt;/a&gt;渲染模板&lt;/h2&gt;
+&lt;p&gt;上述的代码过于简单，毕竟Web开发，颜值也是相当重要的😇，Flask的模板渲染采用jinja2模板引擎。渲染采用的html文件默认从&lt;code&gt;templates&lt;/code&gt;文件夹中读取，该文件夹与&lt;code&gt;app&lt;/code&gt;文件默认在同一个目录下。采用模板的简单示例如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/env python&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; flask &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; Flask&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; flask &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; render_template&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;app = Flask(__name__)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@app.route(&#39;/&#39;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; render_template(&lt;span class=&quot;string&quot;&gt;&#39;index.html&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@app.route(&#39;/user/&amp;lt;name&amp;gt;&#39;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(name)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; render_template(&lt;span class=&quot;string&quot;&gt;&#39;user.html&#39;&lt;/span&gt;, name=name)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; __name__ == &lt;span class=&quot;string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    app.run(debug=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;对应的html文件如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight 1c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;templates&lt;span class=&quot;string&quot;&gt;| &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;string&quot;&gt;|-- index.html  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;string&quot;&gt;|-- user.html&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其中user.html文件分别如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;Hello, &amp;#123;&amp;#123;name&amp;#125;&amp;#125;!&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;注意到user.html文件中 结构表示一个变量，它是一种特殊占位符，表示数据从渲染模板中获取，其识别的类型包括字典，列表和对象等。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  Flask是基于Werkzurg工具和jinja2模板引擎构建的轻Web框架, 据说Flask起源于2010年的愚人节玩笑，但是大家反响热烈，作者Armin Ronacher把它变成了一个真正的框架。对于python Web开发者，Flask开发框架容易入门，并且可以快
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Flask" scheme="http://yoursite.com/tags/Flask/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL触发脚本运行</title>
+    <link href="http://yoursite.com/2016/05/13/MySQL%E8%A7%A6%E5%8F%91%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C/"/>
+    <id>http://yoursite.com/2016/05/13/MySQL触发脚本运行/</id>
+    <published>2016-05-13T12:27:06.000Z</published>
+    <updated>2016-06-15T13:34:53.000Z</updated>
+    
+    <content type="html">&lt;p&gt; 触发器是MySQL的一项十分神奇的功能(笑)，它不仅能够保护数据完整性，还能够触发日志记录和数据审计。进行数据库开发时，采用触发器可以适当减少工作量；但采用触发器也有一定的缺点，如增大MySQL服务器的负载，影响服务器性能，数据库的修改对客户端不可见。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MySQL触发器&lt;br&gt;
+MySQL触发器的语法如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;DELIMITER $$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; [DEFINER = &amp;#123;&lt;span class=&quot;keyword&quot;&gt;user&lt;/span&gt; | &lt;span class=&quot;keyword&quot;&gt;current_user&lt;/span&gt;&amp;#125;] &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TRIGGER&lt;/span&gt; trigger_name trigger_time trigger_event&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; trigger_table &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;EACH&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;ROW&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;BEGIN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    trigger_body;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;END&lt;/span&gt; $$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DELIMITER;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;trigger_name: 触发器名称，在同一个调度中命名唯一；&lt;/li&gt;
+&lt;li&gt;trigger_time: 触发时间，其值为[AFTER, BEFORE];&lt;/li&gt;
+&lt;li&gt;trigger_event: 触发事件，其值为[INSERT, UPDATE, DELETE];&lt;/li&gt;
+&lt;li&gt;trigger_tabele: 触发表名;&lt;/li&gt;
+&lt;li&gt;DEFINER: 产生触发器的用户，拥有一定的权限；其形式为&lt;code&gt;&amp;quot;root&amp;quot;@&amp;quot;localhsot&amp;quot;&lt;/code&gt;, 当不确定用户时，可以通过以下指令查看用户的信息:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; select current_user();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| current_user() |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| root@localhost |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.00 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;利用触发器运行shell/python脚本&lt;br&gt;
+MySQL为用户提供了丰富的自定义接口，用户可以根据项目需求自定义函数(UDF)。同时，MySQL提供插件接口，将自定义函数内嵌至MySQL内部。&lt;a href=&quot;http://www.mysqludf.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UDF Repository &lt;/a&gt;提供开源的MySQL插件。触发器运行脚本需要调用系统的接口，而mysql进程在运行时是以&amp;quot;mysql&amp;quot;用户进行的，&amp;quot;mysql&amp;quot;用户没有徐系统权限，因此，需要通过自定义函数调用系统接口达到运行脚本的目的。本次项目由Jasny提供的&lt;a href=&quot;https://github.com/mysqludf/lib_mysqludf_sys#readme&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&amp;quot;lib_mysqludf_sys&amp;quot;&lt;/a&gt;插件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统运行环境&lt;br&gt;
+ubuntu14.04 64位操作系统&lt;/li&gt;
+&lt;li&gt;MySQL版本&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; select version();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| version()               |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| 5.6.30-0ubuntu0.14.04.1 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.00 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;下载插件&lt;br&gt;
+由于插件是代码贡献者Jasny根据自己运行环境设置，而不同的用户运行环境不同，因此，需要对设置进行一些改变。当下载&amp;quot;lib_mysqludf_sys&amp;quot;插件，修改Make插件。主要修改&amp;quot;plugin_dir&amp;quot;路径，查看该路径的方法如下：&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; show variables like &quot;plugin_dir&quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+---------------+------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| Variable_name | Value                  |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+---------------+------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| plugin_dir    | /usr/lib/mysql/plugin/ |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+---------------+------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.00 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://xn--Makeinstall-000rt4h76wo52d19a.sh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;修改Make文件和install.sh&lt;/a&gt;&lt;br&gt;
+由上步操作可知，mysql插件的路径为&amp;quot; /usr/lib/mysql/plugin/&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;LIBDIR=&lt;span class=&quot;regexp&quot;&gt;/usr/&lt;/span&gt;lib&lt;span class=&quot;regexp&quot;&gt;/mysql/&lt;/span&gt;plugin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;install:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gcc -Wall -m64 -I&lt;span class=&quot;regexp&quot;&gt;/usr/&lt;/span&gt;include&lt;span class=&quot;regexp&quot;&gt;/mysql -I. -shared lib_mysqludf_sys.c -o $(LIBDIR)/&lt;/span&gt;lib_mysqludf_sys.so -fPIC&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改完成之后运行&lt;code&gt;make install&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;运行下面命令验证安装是否正确&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; SELECT sys_exec (&#39;touch /var/lib/mysql/test.txt &#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+---------------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| sys_exec (&#39;touch /tmp/mysql/test.txt &#39;) |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+---------------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| 32512 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+---------------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.00 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;该命令为在目录“/tmp/mysql”下新建&amp;quot;test.txt&amp;quot;文件，务必确保&amp;quot;/tmp/mysql&amp;quot;目录存在。如果不存在可以先新建该目录sys_exec (&#39;mkdir /tmp/mysql，当函数sys_exec行运行成功，返回值应该为0，同时在&amp;quot;/tmp/mysql&amp;quot;下新建了&amp;quot;test.txt&amp;quot;文件。显然，上述的新建文件过程并未成功。这是由于函数sys_exec()在调用系统命令时受到了AppAemor的限制。AppArmor是一个高效和易用的Linux系统安全应用程序，用以保护系统和应用程序不受攻击。因此，系统调用时需要禁止其对mysql的限制，如下：&lt;/p&gt;
+ &lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo ln -s /etc/apparmor.d/usr&lt;span class=&quot;selector-class&quot;&gt;.sbin&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.mysqld&lt;/span&gt; /etc/apparmor.d/disable/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apparmor_parser -R /etc/apparmor.d/usr&lt;span class=&quot;selector-class&quot;&gt;.sbin&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.mysqld&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;再次验证&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; SELECT sys_eval(&#39;id&#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| sys_eval(&#39;id&#39;)                                  |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| uid=116(mysql) gid=125(mysql) groups=125(mysql) |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.09 sec)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; SELECT sys_exec(&#39;mkdir /home/marvin/mysql&#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+--------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| sys_exec(&#39;mkdir /tmp/mysql&#39;) |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+--------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;|                                  256 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+--------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.02 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;验证如上则成功，但是对于sys_exec函数返回不为0，查看mysql日志，看是否有权限问题。修改文件的权限, 如下：&lt;/p&gt;
+ &lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo chown -R &lt;span class=&quot;string&quot;&gt;mysql:&lt;/span&gt;mysql &lt;span class=&quot;regexp&quot;&gt;/tmp/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;完整测试，运行脚本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;新建文件夹&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; SELECT sys_exec(&#39;mkdir /tmp/mysql&#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| sys_exec(&#39;mkdir /tmp/mysql&#39;) |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;|                          256 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.02 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;新建文件，并赋予其可执行权限&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; SELECT sys_exec(&#39;touch /tmp/mysql/run.sh&#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| sys_exec(&#39;touch /tmp/mysql/run.sh&#39;) |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;|                                   0 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+-------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.01 sec)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;mysql&amp;gt; SELECT sys_exec(&#39;chmod +x /tmp/mysql/run.sh&#39;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| sys_exec(&#39;chmod +x /tmp/mysql/run.sh&#39;) |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;|                                      0 |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----------------------------------------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1 row in set (0.15 sec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;编辑run.sh如下：&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#/bin/bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;echo &lt;span class=&quot;string&quot;&gt;&quot;hi, i got you!&quot;&lt;/span&gt; &lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;/tmp/mysql/log.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;设置触发器，当在account表中添加数据，触发脚本运行&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;DELIMITER //&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;TRIGGER&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;IF&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;EXISTS&lt;/span&gt; testTrigger;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;TRIGGER&lt;/span&gt; testTrigger &lt;span class=&quot;keyword&quot;&gt;AFTER&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;account&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;EACH&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;ROW&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;BEGIN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DECLARE&lt;/span&gt; cmd &lt;span class=&quot;built_in&quot;&gt;varchar&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;255&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DECLARE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; cmd = &lt;span class=&quot;string&quot;&gt;&quot;/tmp/mysql/run.sh&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;result&lt;/span&gt; =  sys_exec(cmd);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;END&lt;/span&gt;; //&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;： 当写MySQL语句块时，正常情况下出现&amp;quot;;&amp;quot;,sql语句直接执行并结束。但有时候希望多条语句连续执行，则可以用需要更换界定符，通常将界定符换为&amp;quot;//&amp;quot;,当再次出现该界定符时，MySQL语句执行结束。&lt;/p&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;验证上述操作&lt;br&gt;
+在MySQL的&amp;quot;test&amp;quot;数据库&amp;quot;account&amp;quot;表中添加数据，查看文件&amp;quot;/tmp/mysql/log.txt&amp;quot;, 如下则证明操作成功:&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;figure class=&quot;highlight less&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;marvin&lt;span class=&quot;variable&quot;&gt;@acer:&lt;/span&gt;~$ sudo cat /tmp/mysql/log.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hi, i got you!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;总结&lt;br&gt;
+MySQL触发器触发脚本运行应当注意文件的权限问题，在mysql环境下，所有命令产生的文件的所有权均为&amp;quot;mysql&amp;quot;，但是&amp;quot;msyql&amp;quot;无系统的权限。因此，当运行过程中出现问题，通过查看log查找问题。另外，在Python虚环境中运行python脚本也应当注意文件权限的问题。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参考文献&lt;br&gt;
+[1] &lt;a href=&quot;https://github.com/mysqludf/lib_mysqludf_sys/issues/4&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/mysqludf/lib_mysqludf_sys/issues/4&lt;/a&gt;&lt;br&gt;
+[2] &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/create-trigger.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://dev.mysql.com/doc/refman/5.7/en/create-trigger.html&lt;/a&gt;&lt;br&gt;
+[3] &lt;a href=&quot;http://www.cnblogs.com/rootq/archive/2009/05/27/1490523.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/rootq/archive/2009/05/27/1490523.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 触发器是MySQL的一项十分神奇的功能(笑)，它不仅能够保护数据完整性，还能够触发日志记录和数据审计。进行数据库开发时，采用触发器可以适当减少工作量；但采用触发器也有一定的缺点，如增大MySQL服务器的负载，影响服务器性能，数据库的修改对客户端不可见。&lt;/p&gt;
+&lt;ol&gt;
+
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Crontab</title>
+    <link href="http://yoursite.com/2016/04/27/crontab/"/>
+    <id>http://yoursite.com/2016/04/27/crontab/</id>
+    <published>2016-04-27T08:10:39.000Z</published>
+    <updated>2016-06-15T13:31:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt; crontab是linux下用来周期性执行某种任务的守护进程，是系统默认启动的服务。crontab每分钟定期检查是否有任务需要执行，如果有则自动执行任务&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;crontab定时脚本简介&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;linux下的任务调度分为系统任务调度和用户任务调度。&lt;br&gt;
+系统任务调度：系统周期性要执行的工作，如读写缓存数据到硬盘、日志清理
+crontab 任务包括下面几行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  [root@localhost ~]cat /etc/crontab
+  SHELL=/bin/bash  
+  PATH=/envpath/to/run/script  
+  MAILTO=&amp;quot;&amp;quot;  
+  HOME=/ 
+  # run-part  
+  21 * * * * root run-part /script/to/run
+  42 * 1 * * root run-part /script/to/run  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;crontab文件的前几行定义了运行脚本的环境变量和运行脚本的路径。第一行&lt;code&gt;SHELL&lt;/code&gt;定义了系统需要用哪个shell,此处为bash；第二行&lt;code&gt;PATH&lt;/code&gt;定义了运行命令的环境变量；第三行&lt;code&gt;MAILTO&lt;/code&gt;定义了系统执行命令时通过电子邮件发送信息给crontab用户,当为空时则表示不发送任务执行信息给用户；第四行&lt;code&gt;HOME&lt;/code&gt;指定指定命令或脚本时的主目录。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用户任务调度： 用户定期执行任务，如数据备份或邮件通知等。用户也可以通过crontab建立自己的任务执行计划，用户定义的crontab被保存在&lt;code&gt;/var/spool/cron/crontabs&lt;/code&gt;(系统版本ubunut14.04)目录，注意文件名与用户名一致。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;crontab的文件格式共分为六个字段，前五个为时间格式设定，最后一段为命令，格式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      * * * * * cmd script_to_run
+      | | | | | |   |    
+      | | | | | | ----------- 需要运行的脚本文件
+      | | | | |  ------------ 运行脚本的命令
+      | | | | -------------- 星期,取值范围为0-7  
+      | | | ---------------- 月,取值范围为1-12
+      | | --------------- -- 日,取值范围为1-31
+      | ------------------- 时,取值范围0-23
+      --------------------- 分,取值范围0-59  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在以上各个字段中，可以使用以下特殊字符：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;星号(*): 代表所有可能值&lt;/li&gt;
+&lt;li&gt;逗号(,): 逗号隔开取值，表示列表范围，如“1，2，5，7”&lt;/li&gt;
+&lt;li&gt;中杠(-): 表示范围，如“1-7”，表示取值从1到7&lt;/li&gt;
+&lt;li&gt;正斜杠(/): 表示时间间隔频率，第一个时间字符为“*/2”, 表示每2分钟&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;crontab定时运行脚本步骤&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;新建crontab文件mytab并载入系统&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  crontab mytab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看crontab文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  crontab -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编辑crontab文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  crontab -e  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除crontab文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   crontab -r  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编辑crontab文件的具体方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;每5分钟定时运行脚本，例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; */5 * * * * cmd script  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每天6点运行脚本，例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  0 6 * * * cmd script  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2015年10月7日12点17分运行脚本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  17 12 7 10 2015 cmd script          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每月周一到周三的晚上11点到早上7点之间每隔1个小时重启smb&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  * 23-7/1 * * 1-3 /etc/init.d/smb restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每月的4号与周一到周三的11点重启smb&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  * 11 4 * mon-wek /etc/init.d/smb restart  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;参考资料：&lt;br&gt;
+[1] &lt;a href=&quot;http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html&lt;/a&gt;&lt;br&gt;
+[2] &lt;a href=&quot;http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; crontab是linux下用来周期性执行某种任务的守护进程，是系统默认启动的服务。crontab每分钟定期检查是否有任务需要执行，如果有则自动执行任务&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;crontab定时脚本简介&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;linux下的任务调度
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>启航</title>
+    <link href="http://yoursite.com/2016/04/24/%E5%90%AF%E8%88%AA/"/>
+    <id>http://yoursite.com/2016/04/24/启航/</id>
+    <published>2016-04-24T08:25:15.000Z</published>
+    <updated>2016-06-15T13:36:26.000Z</updated>
+    
+    <content type="html">&lt;p&gt; 很早就酝酿搭建一个自己的博客，但由于其他一些原因一直未能实现。最近，在搜集一些专业方面的资料，一方面感觉在东西写得比较乱，很大的原因可能是除了自己每人会看，也不在乎排版和美观，事后也没有那么大的兴趣再回首，这是一个及其不好的习惯；另一方，在查资料更的过程中也看到一些很好的Blog，其中也不乏比较优美的文字与排版，但总的看来&lt;a href=&quot;http://wuchong.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Jark’s Blog&lt;/a&gt;的简约风格使我印象深刻,于是周末花了一天时间按照其Blog的风格搭建了自己的博客 😄 😃 💥&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 很早就酝酿搭建一个自己的博客，但由于其他一些原因一直未能实现。最近，在搜集一些专业方面的资料，一方面感觉在东西写得比较乱，很大的原因可能是除了自己每人会看，也不在乎排版和美观，事后也没有那么大的兴趣再回首，这是一个及其不好的习惯；另一方，在查资料更的过程中也看到一些很好的
+    
+    </summary>
+    
+      <category term="朝夕" scheme="http://yoursite.com/categories/%E6%9C%9D%E5%A4%95/"/>
+    
+    
+      <category term="朝夕" scheme="http://yoursite.com/tags/%E6%9C%9D%E5%A4%95/"/>
+    
+  </entry>
+  
+</feed>
