@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Marvin&#39;s Blog</title>
+  <title>木然</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-15T13:38:15.000Z</updated>
+  <updated>2016-06-15T16:43:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>意外</title>
+    <link href="http://yoursite.com/2016/06/15/%E6%84%8F%E5%A4%96/"/>
+    <id>http://yoursite.com/2016/06/15/意外/</id>
+    <published>2016-06-15T15:59:56.000Z</published>
+    <updated>2016-06-15T16:43:34.000Z</updated>
+    
+    <content type="html">&lt;p&gt; 每次编写markdwon文件总是在排版的问题上出点小的意外，这些意外更多是编辑不熟练导致。虽说从技术的角度将这没什么难度，但却耗费时间调整，本来不错的兴致却被这小的问题弄得一干二净！但文章终究还是要给别人看的，多少还是注意一点为好！&lt;/p&gt;
+&lt;h2 id=&quot;代码高亮显示&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#代码高亮显示&quot;&gt;¶&lt;/a&gt;代码高亮显示&lt;/h2&gt;
+&lt;p&gt;不同的编程语言除了编写风格不同，其在一些编辑器或者博客中显示也不同。在markdown中也不例外，markdown插入代码块的方式有三种：空格、三个连续 &lt;strong&gt;`&lt;/strong&gt; 和三个连续 &lt;strong&gt;~&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空格：代码块的起始4个空格, 但是在代码块的前一行必须和非代码块中间用空白行隔开&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;`&lt;/strong&gt; ：代码块以3个该符号开始，并以3个该符号结束，&lt;strong&gt;代码块结束换行无需用双空格结束&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;~&lt;/strong&gt;： 和**`&lt;strong&gt;相同，以3个&lt;/strong&gt;~**开始，以3个该符号结束，同样无需用双空格结束，与前者不同的是，后者在开始的三个符号后加上编程语言的标识。如下所示：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;hello world!&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 每次编写markdwon文件总是在排版的问题上出点小的意外，这些意外更多是编辑不熟练导致。虽说从技术的角度将这没什么难度，但却耗费时间调整，本来不错的兴致却被这小的问题弄得一干二净！但文章终究还是要给别人看的，多少还是注意一点为好！&lt;/p&gt;
+&lt;h2 id=&quot;代码高亮显示&quot;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MarkDown" scheme="http://yoursite.com/tags/MarkDown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Flask之旅</title>
     <link href="http://yoursite.com/2016/06/11/Flask%E4%B9%8B%E6%97%85/"/>
     <id>http://yoursite.com/2016/06/11/Flask之旅/</id>
     <published>2016-06-11T11:35:37.000Z</published>
-    <updated>2016-06-15T13:38:15.000Z</updated>
+    <updated>2016-06-15T17:37:00.000Z</updated>
     
     <content type="html">&lt;p&gt;  Flask是基于Werkzurg工具和jinja2模板引擎构建的轻Web框架, 据说Flask起源于2010年的愚人节玩笑，但是大家反响热烈，作者Armin Ronacher把它变成了一个真正的框架。对于python Web开发者，Flask开发框架容易入门，并且可以快速搭建网站解决问题。&lt;/p&gt;
 &lt;h2 id=&quot;flask示例&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#flask示例&quot;&gt;¶&lt;/a&gt;Flask示例:&lt;/h2&gt;
@@ -29,7 +61,7 @@
 &lt;p&gt;上述的代码过于简单，毕竟Web开发，颜值也是相当重要的😇，Flask的模板渲染采用jinja2模板引擎。渲染采用的html文件默认从&lt;code&gt;templates&lt;/code&gt;文件夹中读取，该文件夹与&lt;code&gt;app&lt;/code&gt;文件默认在同一个目录下。采用模板的简单示例如下:&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/env python&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; flask &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; Flask&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; flask &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; render_template&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;app = Flask(__name__)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@app.route(&#39;/&#39;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; render_template(&lt;span class=&quot;string&quot;&gt;&#39;index.html&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@app.route(&#39;/user/&amp;lt;name&amp;gt;&#39;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(name)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; render_template(&lt;span class=&quot;string&quot;&gt;&#39;user.html&#39;&lt;/span&gt;, name=name)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; __name__ == &lt;span class=&quot;string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    app.run(debug=&lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;对应的html文件如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight 1c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;templates&lt;span class=&quot;string&quot;&gt;| &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;string&quot;&gt;|-- index.html  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;string&quot;&gt;|-- user.html&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight 1c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;templates&lt;span class=&quot;string&quot;&gt;|&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;string&quot;&gt;|-- index.html&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;string&quot;&gt;|-- user.html&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;其中user.html文件分别如下:&lt;/p&gt;
 &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;Hello, &amp;#123;&amp;#123;name&amp;#125;&amp;#125;!&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;注意到user.html文件中 结构表示一个变量，它是一种特殊占位符，表示数据从渲染模板中获取，其识别的类型包括字典，列表和对象等。&lt;/p&gt;
