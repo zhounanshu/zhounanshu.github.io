@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-19T15:33:13.000Z</updated>
+  <updated>2016-06-19T17:47:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/19/Flask-Apache%E9%83%A8%E7%BD%B2/"/>
     <id>http://yoursite.com/2016/06/19/Flask-Apache部署/</id>
     <published>2016-06-19T12:50:13.000Z</published>
-    <updated>2016-06-19T15:33:13.000Z</updated>
+    <updated>2016-06-19T17:47:30.000Z</updated>
     
     <content type="html">&lt;p&gt;  Apache Web服务诞生于1995年, 目前在所有网站中，Apache服务的占有率第一。由于多年的发展，其服务相对于其他网站部署服务更加稳定。在面对性能要求不苛刻而对稳定性要求较高的情况下，优先选择Apache。当然，为了应对性能需求，更好的选择为Ngnix。Flask为轻型的python web框架，对apache有着 完美的支持。
 以下为利用Apache部署Flask的实验：&lt;/p&gt;
@@ -63,7 +63,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;后记：&lt;/strong&gt;
-在部署的过程中遇到一些问题，如在加载Apache配置文件的时候先加载默认配置文件，然后是自定义配置文件。有时，默认的配置文件会对自定义的配置文件产生影响，使得访问应用的时候页面显示应用的目录，至于这一点还有待验证！&lt;/p&gt;
+在部署的过程中遇到一些问题，如在加载Apache配置文件的时候先加载默认配置文件，然后是自定义配置文件。有时，默认的配置文件会对自定义的配置文件产生影响，使得访问应用的时候页面显示应用的目录，通常Apache只加载第一个配置文件，其他配置文件则无效，至于这一点还有待验证！&lt;/p&gt;
 &lt;p&gt;参考文献:&lt;/p&gt;
 &lt;p&gt;[1] &lt;a href=&quot;http://flask.pocoo.org/docs/0.11/deploying/mod_wsgi/#configuring-apache&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://flask.pocoo.org/docs/0.11/deploying/mod_wsgi/#configuring-apache&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[2] &lt;a href=&quot;http://www.jianshu.com/p/6e7e7c58342c&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/6e7e7c58342c&lt;/a&gt;&lt;/p&gt;
