@@ -1,20 +1,20 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Crontab | 木然</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Crontab</h1><a id="logo" href="/.">木然</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/project/"><i class="fa fa-tree"> 项目</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Crontab</h1><div class="post-meta">Apr 27, 2016<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/04/27/crontab/" href="/2016/04/27/crontab/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p> crontab是linux下用来周期性执行某种任务的守护进程，是系统默认启动的服务。crontab每分钟定期检查是否有任务需要执行，如果有则自动执行任务</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Crontab | 木欣欣然</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Crontab</h1><a id="logo" href="/.">木欣欣然</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/project/"><i class="fa fa-tree"> 项目</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Crontab</h1><div class="post-meta">Apr 27, 2016<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/04/27/crontab/" href="/2016/04/27/crontab/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p> crontab是linux下用来周期性执行某种任务的守护进程，是系统默认启动的服务。crontab每分钟定期检查是否有任务需要执行，如果有则自动执行任务</p>
 <ol>
 <li>
 <p>crontab定时脚本简介</p>
 <ul>
 <li>
-<p>linux下的任务调度分为系统任务调度和用户任务调度。<br>
+<p>linux下的任务调度分为系统任务调度和用户任务调度。
 系统任务调度：系统周期性要执行的工作，如读写缓存数据到硬盘、日志清理
 crontab 任务包括下面几行：</p>
 <pre><code>  [root@localhost ~]cat /etc/crontab
-  SHELL=/bin/bash  
-  PATH=/envpath/to/run/script  
-  MAILTO=&quot;&quot;  
-  HOME=/ 
-  # run-part  
+  SHELL=/bin/bash
+  PATH=/envpath/to/run/script
+  MAILTO=&quot;&quot;
+  HOME=/
+  # run-part
   21 * * * * root run-part /script/to/run
-  42 * 1 * * root run-part /script/to/run  
+  42 * 1 * * root run-part /script/to/run
 </code></pre>
 </li>
 </ul>
@@ -26,14 +26,14 @@ crontab 任务包括下面几行：</p>
 <li>
 <p>crontab的文件格式共分为六个字段，前五个为时间格式设定，最后一段为命令，格式如下：</p>
 <pre><code>      * * * * * cmd script_to_run
-      | | | | | |   |    
+      | | | | | |   |
       | | | | | | ----------- 需要运行的脚本文件
       | | | | |  ------------ 运行脚本的命令
-      | | | | -------------- 星期,取值范围为0-7  
+      | | | | -------------- 星期,取值范围为0-7
       | | | ---------------- 月,取值范围为1-12
       | | --------------- -- 日,取值范围为1-31
       | ------------------- 时,取值范围0-23
-      --------------------- 分,取值范围0-59  
+      --------------------- 分,取值范围0-59
 </code></pre>
 <p>在以上各个字段中，可以使用以下特殊字符：</p>
 <ul>
@@ -60,12 +60,12 @@ crontab 任务包括下面几行：</p>
 </li>
 <li>
 <p>编辑crontab文件</p>
-<pre><code>  crontab -e  
+<pre><code>  crontab -e
 </code></pre>
 </li>
 <li>
 <p>删除crontab文件</p>
-<pre><code>   crontab -r  
+<pre><code>   crontab -r
 </code></pre>
 </li>
 </ul>
@@ -75,17 +75,17 @@ crontab 任务包括下面几行：</p>
 <ul>
 <li>
 <p>每5分钟定时运行脚本，例：</p>
-<pre><code> */5 * * * * cmd script  
+<pre><code> */5 * * * * cmd script
 </code></pre>
 </li>
 <li>
 <p>每天6点运行脚本，例：</p>
-<pre><code>  0 6 * * * cmd script  
+<pre><code>  0 6 * * * cmd script
 </code></pre>
 </li>
 <li>
 <p>2015年10月7日12点17分运行脚本</p>
-<pre><code>  17 12 7 10 2015 cmd script          
+<pre><code>  17 12 7 10 2015 cmd script
 </code></pre>
 </li>
 <li>
@@ -95,16 +95,51 @@ crontab 任务包括下面几行：</p>
 </li>
 <li>
 <p>每月的4号与周一到周三的11点重启smb</p>
-<pre><code>  * 11 4 * mon-wek /etc/init.d/smb restart  
+<pre><code>  * 11 4 * mon-wek /etc/init.d/smb restart
 </code></pre>
 </li>
 </ul>
 </li>
+<li>
+<p>ubuntu14.04查看crontab日志</p>
+<p> 当crontab编辑正确且手动执行脚本可运行，但crontab不起作用，这事需要通过查看cronbtab的日志查找问题所在。ubuntu14.04系统默认不开启crontab日志。因此，需要手动解锁cron日志，修改rsyslog, 具体方法如下：</p>
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi <span class="regexp">/etc/</span>rsyslog.d/<span class="number">50</span>-<span class="keyword">default</span>.conf</span><br></pre></td></tr></table></figure>
+<p>在脚本的第10行解除<code>cron.*</code>
+重启rsyslog,</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service rsyslog <span class="built_in">restart</span></span><br></pre></td></tr></table></figure>
+<p> 重启rsyslog之后， 在目录<code>/var/log</code>下可以找到<code>cron.log</code>, 当出现问题，可以通过查看日志查找问题所在。cron查找另一个问题的利器是通过发送邮件给用户，邮件中通常指出问题所在，比log所提供的信息要多。主要的linux分布版本自带邮件代理服务，但ubuntu是个特例，因此需要手动安装。安装指令如下：</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install <span class="built_in">postfix</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>注意环境变量(系统为ubuntu14.04)</p>
+<ul>
+<li>
+<p>crontab与相对路径
+ 在执行脚本的时候，如果脚本中含有从其他位置引入的模块(<font color="red">即引用了相对位置</font>)，在crontab中直接编辑命令听行运行脚本会产生错误。这种错误通常是由运行环境不同导致。由于运行环境不同，无法从相对路径中引入脚本运行的模块，导致运行脚本失败。解决的办法时，在运行脚本之前，先通过脚本将运行环境过渡到手动运行脚本的环境，然后在crontab文件中编辑相应的命令行。一个比较好的做法是，将所有需要执行的命令编入到一个总的shell脚本中，通过crontab 控制该shell脚本的运行。</p>
+</li>
+<li>
+<p>crontab与shell
+在了解crontable加载shell之前需要了解几个与shell有关的文件：</p>
+<ul>
+<li>/etc/profile: 该文件为每个用户设置系统环境变量，当用户登录时，该文件被执行一次并从文件<code>/ect/bash.bashrc</code>和 目录<code>/etc/profile.d</code>下加载shell设置</li>
+<li>/etc/bash.bashrc: 为每个运行bash shell的用户执行此文件</li>
+<li>~/.profile: 该为用户级加载shell设置环境变量，当用户登入时该文件执行一次，并加载<code>~/.bashrc</code></li>
+<li>~/.bashrc: 用户自定义shell环境变量，用户登录或打开新的shell该文件被执行
+注意：前两个文件为全局shell设置，后两者针对特定用户设置</li>
+</ul>
+</li>
+</ul>
+<p> crontab在加载环境设置的时候并不主动从<strong>profile</strong>文件中加载环境设置，因此会导致在手动运行脚本的时候不会出现问题，但当cron运行脚本的时候却发现脚本无法运行。
+一个比较好的方法是在总的控制脚本前先加载<code>profile</code>, 如下：</p>
+ <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">. </span>/etc/profile</span><br><span class="line"><span class="bullet">. </span>~/.profile</span><br></pre></td></tr></table></figure>
+<p>另外， 如果用到第三方的一些命令行，则可以通过在linux系统共享库(*.so)中加载相应的目录</p>
+</li>
 </ol>
-<p>参考资料：<br>
-[1] <a href="http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html" target="_blank" rel="external">http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html</a><br>
-[2] <a href="http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/" target="_blank" rel="external">http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/</a></p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/04/27/crontab/" data-id="cipmvz3lf00080nwd9xsq7pua" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Linux/">Linux</a></div><div class="post-nav"><a href="/2016/05/13/MySQL触发脚本运行/" class="pre">MySQL触发脚本运行</a><a href="/2016/04/24/启航/" class="next">启航</a></div><div id="disqus_thread"><script>var disqus_shortname = 'marvinme';
+<p>参考资料：</p>
+<p>[1] <a href="http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html" target="_blank" rel="external">http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html</a></p>
+<p>[2] <a href="http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/" target="_blank" rel="external">http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/</a></p>
+<p>[3] <a href="http://www.justwinit.cn/post/3377/" target="_blank" rel="external">http://www.justwinit.cn/post/3377/</a></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/04/27/crontab/" data-id="ciruwup2x000gxfwd6w2pvofr" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Linux/">Linux</a></div><div class="post-nav"><a href="/2016/05/13/MySQL触发脚本运行/" class="pre">MySQL触发脚本运行</a><a href="/2016/04/24/启航/" class="next">启航</a></div><div id="disqus_thread"><script>var disqus_shortname = 'marvinme';
 var disqus_identifier = '2016/04/27/crontab/';
 var disqus_title = 'Crontab';
 var disqus_url = 'http://yoursite.com/2016/04/27/crontab/';
@@ -112,4 +147,4 @@ var disqus_url = 'http://yoursite.com/2016/04/27/crontab/';
   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//marvinme.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/朝夕/">朝夕</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Sublime/" style="font-size: 15px;">Sublime</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MarkDown/" style="font-size: 15px;">MarkDown</a> <a href="/tags/朝夕/" style="font-size: 15px;">朝夕</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/Flask-Apache部署/">Flask-Apache部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/Sublime定制/">Sublime定制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/意外/">意外</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/11/Flask之旅/">Flask之旅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/MySQL触发脚本运行/">MySQL触发脚本运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/crontab/">Crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/24/启航/">启航</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//marvinme.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://omnilab.sjtu.edu.cn/" title="OMNILab" target="_blank">OMNILab</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">木然.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+})();</script><script id="dsq-count-scr" src="//marvinme.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/有趣/">有趣</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/朝夕/">朝夕</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/Sublime/" style="font-size: 15px;">Sublime</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/朝夕/" style="font-size: 15px;">朝夕</a> <a href="/tags/language/" style="font-size: 15px;">language</a> <a href="/tags/MarkDown/" style="font-size: 15px;">MarkDown</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/MySQL之分页/">MySQL之分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/25/哈哈哈/">哈哈哈</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/Scrapy模拟登录/">Scrapy模拟登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/Flask-Apache部署/">Flask-Apache部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/Sublime定制/">Sublime定制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/意外/">意外</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/11/Flask之旅/">Flask之旅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/MySQL触发脚本运行/">MySQL触发脚本运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/crontab/">Crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/24/启航/">启航</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//marvinme.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://omnilab.sjtu.edu.cn/" title="OMNILab" target="_blank">OMNILab</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">木欣欣然.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

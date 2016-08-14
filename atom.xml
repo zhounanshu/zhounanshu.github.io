@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>木然</title>
+  <title>木欣欣然</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-19T17:47:30.000Z</updated>
+  <updated>2016-08-14T17:52:02.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,132 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MySQL之分页</title>
+    <link href="http://yoursite.com/2016/08/15/MySQL%E4%B9%8B%E5%88%86%E9%A1%B5/"/>
+    <id>http://yoursite.com/2016/08/15/MySQL之分页/</id>
+    <published>2016-08-14T16:02:31.000Z</published>
+    <updated>2016-08-14T17:52:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt; 在MySQL的官方文档中是这样描述&lt;code&gt;limit&lt;/code&gt;优化查询的：如果你想查询指定数目的结果集，采用limit限制查询次数是一个不错的选择。这样，你就不用查询全部的数据集，然后丢掉额外的数据了。&lt;/p&gt;
+&lt;p&gt; 进行limit优化，可以从以下几个方面考虑：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;采用索引查询(这个可以结合索引文件进行分析，MyISAM生成一个表需要3个文件：表结构文件、表记录文件和索引文件；InnoDB则是数据文件和索引文件为同一个文件)；&lt;/li&gt;
+&lt;li&gt;如果结果集存在排序的情景，先进行查询结果集的数量限制，然后对结果集进行排序；&lt;/li&gt;
+&lt;li&gt;如果采用  &lt;code&gt;DISTINCT&lt;/code&gt;查询，当找到所有符合唯一记录时停止查询；&lt;/li&gt;
+&lt;li&gt;如果服务器使用临时表来解决查询，那么可以通过limit 条数计算表所需的空间；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;limit详细用法&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#limit详细用法&quot;&gt;¶&lt;/a&gt;limit详细用法&lt;/h2&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; table_name &lt;span class=&quot;keyword&quot;&gt;LIMIT&lt;/span&gt; [&lt;span class=&quot;keyword&quot;&gt;offset&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;rows&lt;/span&gt;] | &lt;span class=&quot;keyword&quot;&gt;rows&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;OFFSET&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;offset&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;limit&lt;/code&gt;用于强制返回结果集的数目，其接受一个或两个参数。第一个参数返回结果集的偏移，第二个结果集返回结果集的行数。&lt;font color=&quot;ff0000&quot;&gt;初始记录的行偏移从0开始。 例如：&lt;/font&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; table_name &lt;span class=&quot;keyword&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;表示查询的记录为5-14。&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * frome table_name limt &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;表示查询从6 至最后一条记录&lt;/p&gt;
+&lt;h2 id=&quot;分页优化查询&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#分页优化查询&quot;&gt;¶&lt;/a&gt;分页优化查询&lt;/h2&gt;
+&lt;p&gt;分页优化查询的终极目标为没有分页，然而现实总是和理想存在着偏差&lt;/p&gt;
+&lt;h3 id=&quot;场景一：&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#场景一：&quot;&gt;¶&lt;/a&gt;场景一：&lt;/h3&gt;
+&lt;p&gt;语句A:&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; tb_name &lt;span class=&quot;keyword&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;语句B:&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; tb_name &lt;span class=&quot;keyword&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;98200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;从查询结果看语句A和B的结果集均为20条记录，但是语句A的查询时间远小于语句B。原因是语句B需要先扫面98200条语句进行排序，而语句A则只需要扫描100条语句再进行排序。&lt;/p&gt;
+&lt;p&gt;优化方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;子查询：先查询倒序id最大的数值，然后顺序取10条&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; tb_name &lt;span class=&quot;keyword&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &amp;gt; (&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; tb_name &lt;span class=&quot;keyword&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;98220&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;表连接：先获取id结果集，然后将结果集与原表&amp;quot;inner join&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;leedcode示例：&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#leedcode示例：&quot;&gt;¶&lt;/a&gt;LeedCode示例：&lt;/h2&gt;
+&lt;p&gt;Write a SQL query to get the n_th highest salary from the Employee table&lt;/p&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;# 示例表如下：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----+--------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| Id | Salary |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----+--------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;| 1  | 100    |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;| 2  | 200    |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;| 3  | 300    |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+----+--------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;解决方案：&lt;/p&gt;
+&lt;figure class=&quot;highlight oxygene&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FUNCTION&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getNthHighestSalary&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(N INT)&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RETURNS&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;INT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;BEGIN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;DECLARE&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;INT&lt;/span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SET&lt;/span&gt; M = N -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  RETURN (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      # &lt;span class=&quot;keyword&quot;&gt;Write&lt;/span&gt; your MySQL query statement below.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;DISTINCT&lt;/span&gt; Salary &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; Employee &lt;span class=&quot;keyword&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; Salary &lt;span class=&quot;keyword&quot;&gt;desc&lt;/span&gt; limit M, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;END&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;当去掉DISTINCT该方法错误，这个与DISTINCT用法有关。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 在MySQL的官方文档中是这样描述&lt;code&gt;limit&lt;/code&gt;优化查询的：如果你想查询指定数目的结果集，采用limit限制查询次数是一个不错的选择。这样，你就不用查询全部的数据集，然后丢掉额外的数据了。&lt;/p&gt;
+&lt;p&gt; 进行limit优化，可以从以下几个方面考虑：
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>哈哈哈</title>
+    <link href="http://yoursite.com/2016/06/25/%E5%93%88%E5%93%88%E5%93%88/"/>
+    <id>http://yoursite.com/2016/06/25/哈哈哈/</id>
+    <published>2016-06-24T16:29:32.000Z</published>
+    <updated>2016-06-24T16:37:56.000Z</updated>
+    
+    <content type="html">&lt;p&gt;  为生活找点乐趣，看自己处在一个怎样的位置！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/fmeyer/289467&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;python程序员发展历程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;虽然这边文章在newsletter发表很多年了，但是还是有点乐趣的!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  为生活找点乐趣，看自己处在一个怎样的位置！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/fmeyer/289467&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;python程序员发展历程&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="有趣" scheme="http://yoursite.com/categories/%E6%9C%89%E8%B6%A3/"/>
+    
+    
+      <category term="language" scheme="http://yoursite.com/tags/language/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scrapy模拟登录</title>
+    <link href="http://yoursite.com/2016/06/22/Scrapy%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/"/>
+    <id>http://yoursite.com/2016/06/22/Scrapy模拟登录/</id>
+    <published>2016-06-21T17:09:08.000Z</published>
+    <updated>2016-06-21T17:13:46.000Z</updated>
+    
+    <content type="html">&lt;p&gt; 
+参考文献：&lt;/p&gt;
+&lt;p&gt;[1] &lt;a href=&quot;http://doc.scrapy.org/en/latest/intro/tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://doc.scrapy.org/en/latest/intro/tutorial.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2] &lt;a href=&quot;http://www.jianshu.com/p/b7f41df6202d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/b7f41df6202d&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 
+参考文献：&lt;/p&gt;
+&lt;p&gt;[1] &lt;a href=&quot;http://doc.scrapy.org/en/latest/intro/tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://doc.scrapy.org/en/
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Scrapy" scheme="http://yoursite.com/tags/Scrapy/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Flask-Apache部署</title>
     <link href="http://yoursite.com/2016/06/19/Flask-Apache%E9%83%A8%E7%BD%B2/"/>
     <id>http://yoursite.com/2016/06/19/Flask-Apache部署/</id>
     <published>2016-06-19T12:50:13.000Z</published>
-    <updated>2016-06-19T17:47:30.000Z</updated>
+    <updated>2016-06-19T17:48:47.000Z</updated>
     
     <content type="html">&lt;p&gt;  Apache Web服务诞生于1995年, 目前在所有网站中，Apache服务的占有率第一。由于多年的发展，其服务相对于其他网站部署服务更加稳定。在面对性能要求不苛刻而对稳定性要求较高的情况下，优先选择Apache。当然，为了应对性能需求，更好的选择为Ngnix。Flask为轻型的python web框架，对apache有着 完美的支持。
 以下为利用Apache部署Flask的实验：&lt;/p&gt;
@@ -293,7 +414,7 @@ MySQL触发器触发脚本运行应当注意文件的权限问题，在mysql环�
     <link href="http://yoursite.com/2016/04/27/crontab/"/>
     <id>http://yoursite.com/2016/04/27/crontab/</id>
     <published>2016-04-27T08:10:39.000Z</published>
-    <updated>2016-06-15T13:31:02.000Z</updated>
+    <updated>2016-07-03T04:44:40.000Z</updated>
     
     <content type="html">&lt;p&gt; crontab是linux下用来周期性执行某种任务的守护进程，是系统默认启动的服务。crontab每分钟定期检查是否有任务需要执行，如果有则自动执行任务&lt;/p&gt;
 &lt;ol&gt;
@@ -301,17 +422,17 @@ MySQL触发器触发脚本运行应当注意文件的权限问题，在mysql环�
 &lt;p&gt;crontab定时脚本简介&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;linux下的任务调度分为系统任务调度和用户任务调度。&lt;br&gt;
+&lt;p&gt;linux下的任务调度分为系统任务调度和用户任务调度。
 系统任务调度：系统周期性要执行的工作，如读写缓存数据到硬盘、日志清理
 crontab 任务包括下面几行：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;  [root@localhost ~]cat /etc/crontab
-  SHELL=/bin/bash  
-  PATH=/envpath/to/run/script  
-  MAILTO=&amp;quot;&amp;quot;  
-  HOME=/ 
-  # run-part  
+  SHELL=/bin/bash
+  PATH=/envpath/to/run/script
+  MAILTO=&amp;quot;&amp;quot;
+  HOME=/
+  # run-part
   21 * * * * root run-part /script/to/run
-  42 * 1 * * root run-part /script/to/run  
+  42 * 1 * * root run-part /script/to/run
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -323,14 +444,14 @@ crontab 任务包括下面几行：&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;crontab的文件格式共分为六个字段，前五个为时间格式设定，最后一段为命令，格式如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;      * * * * * cmd script_to_run
-      | | | | | |   |    
+      | | | | | |   |
       | | | | | | ----------- 需要运行的脚本文件
       | | | | |  ------------ 运行脚本的命令
-      | | | | -------------- 星期,取值范围为0-7  
+      | | | | -------------- 星期,取值范围为0-7
       | | | ---------------- 月,取值范围为1-12
       | | --------------- -- 日,取值范围为1-31
       | ------------------- 时,取值范围0-23
-      --------------------- 分,取值范围0-59  
+      --------------------- 分,取值范围0-59
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在以上各个字段中，可以使用以下特殊字符：&lt;/p&gt;
 &lt;ul&gt;
@@ -357,12 +478,12 @@ crontab 任务包括下面几行：&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;编辑crontab文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  crontab -e  
+&lt;pre&gt;&lt;code&gt;  crontab -e
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;删除crontab文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   crontab -r  
+&lt;pre&gt;&lt;code&gt;   crontab -r
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -372,17 +493,17 @@ crontab 任务包括下面几行：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;每5分钟定时运行脚本，例：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; */5 * * * * cmd script  
+&lt;pre&gt;&lt;code&gt; */5 * * * * cmd script
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;每天6点运行脚本，例：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  0 6 * * * cmd script  
+&lt;pre&gt;&lt;code&gt;  0 6 * * * cmd script
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;2015年10月7日12点17分运行脚本&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  17 12 7 10 2015 cmd script          
+&lt;pre&gt;&lt;code&gt;  17 12 7 10 2015 cmd script
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -392,15 +513,50 @@ crontab 任务包括下面几行：&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;每月的4号与周一到周三的11点重启smb&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  * 11 4 * mon-wek /etc/init.d/smb restart  
+&lt;pre&gt;&lt;code&gt;  * 11 4 * mon-wek /etc/init.d/smb restart
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ubuntu14.04查看crontab日志&lt;/p&gt;
+&lt;p&gt; 当crontab编辑正确且手动执行脚本可运行，但crontab不起作用，这事需要通过查看cronbtab的日志查找问题所在。ubuntu14.04系统默认不开启crontab日志。因此，需要手动解锁cron日志，修改rsyslog, 具体方法如下：&lt;/p&gt;
+ &lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi &lt;span class=&quot;regexp&quot;&gt;/etc/&lt;/span&gt;rsyslog.d/&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;-&lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在脚本的第10行解除&lt;code&gt;cron.*&lt;/code&gt;
+重启rsyslog,&lt;/p&gt;
+ &lt;figure class=&quot;highlight maxima&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo service rsyslog &lt;span class=&quot;built_in&quot;&gt;restart&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 重启rsyslog之后， 在目录&lt;code&gt;/var/log&lt;/code&gt;下可以找到&lt;code&gt;cron.log&lt;/code&gt;, 当出现问题，可以通过查看日志查找问题所在。cron查找另一个问题的利器是通过发送邮件给用户，邮件中通常指出问题所在，比log所提供的信息要多。主要的linux分布版本自带邮件代理服务，但ubuntu是个特例，因此需要手动安装。安装指令如下：&lt;/p&gt;
+ &lt;figure class=&quot;highlight maxima&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-&lt;span class=&quot;built_in&quot;&gt;get&lt;/span&gt; install &lt;span class=&quot;built_in&quot;&gt;postfix&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意环境变量(系统为ubuntu14.04)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;crontab与相对路径
+ 在执行脚本的时候，如果脚本中含有从其他位置引入的模块(&lt;font color=&quot;red&quot;&gt;即引用了相对位置&lt;/font&gt;)，在crontab中直接编辑命令听行运行脚本会产生错误。这种错误通常是由运行环境不同导致。由于运行环境不同，无法从相对路径中引入脚本运行的模块，导致运行脚本失败。解决的办法时，在运行脚本之前，先通过脚本将运行环境过渡到手动运行脚本的环境，然后在crontab文件中编辑相应的命令行。一个比较好的做法是，将所有需要执行的命令编入到一个总的shell脚本中，通过crontab 控制该shell脚本的运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;crontab与shell
+在了解crontable加载shell之前需要了解几个与shell有关的文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/etc/profile: 该文件为每个用户设置系统环境变量，当用户登录时，该文件被执行一次并从文件&lt;code&gt;/ect/bash.bashrc&lt;/code&gt;和 目录&lt;code&gt;/etc/profile.d&lt;/code&gt;下加载shell设置&lt;/li&gt;
+&lt;li&gt;/etc/bash.bashrc: 为每个运行bash shell的用户执行此文件&lt;/li&gt;
+&lt;li&gt;~/.profile: 该为用户级加载shell设置环境变量，当用户登入时该文件执行一次，并加载&lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;~/.bashrc: 用户自定义shell环境变量，用户登录或打开新的shell该文件被执行
+注意：前两个文件为全局shell设置，后两者针对特定用户设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; crontab在加载环境设置的时候并不主动从&lt;strong&gt;profile&lt;/strong&gt;文件中加载环境设置，因此会导致在手动运行脚本的时候不会出现问题，但当cron运行脚本的时候却发现脚本无法运行。
+一个比较好的方法是在总的控制脚本前先加载&lt;code&gt;profile&lt;/code&gt;, 如下：&lt;/p&gt;
+ &lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;. &lt;/span&gt;/etc/profile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;. &lt;/span&gt;~/.profile&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;另外， 如果用到第三方的一些命令行，则可以通过在linux系统共享库(*.so)中加载相应的目录&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;参考资料：&lt;br&gt;
-[1] &lt;a href=&quot;http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html&lt;/a&gt;&lt;br&gt;
-[2] &lt;a href=&quot;http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;p&gt;[1] &lt;a href=&quot;http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2] &lt;a href=&quot;http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3] &lt;a href=&quot;http://www.justwinit.cn/post/3377/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.justwinit.cn/post/3377/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
