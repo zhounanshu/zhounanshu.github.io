@@ -1,35 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | 木欣欣然</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">木欣欣然</h1><a id="logo" href="/.">木欣欣然</a><p class="description"></p></div><div id="nav-menu"><a href="/."><i class="fa fa-home"> 首页</i></a><a href="/project/" class="current"><i class="fa fa-tree"> 项目</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-content"><!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-    <title>Meteor Tag</title>
-    <link rel="stylesheet" type="text/css" href="/project/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
-<body>
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><h2>项目名称：气象徽章</h2>
-<h3>时间：2015-06 ~ 2016-04</h3>
-<h3>项目简介: </h3>
-<p>“气象徽章”是一款基于蓝牙4.0的可穿戴式气象监测设备。该项目为设备的数据采集提供接入后台，并对数据进行清洗和处理，为第三方的应用提供restful API接口。该可穿戴设备测量温度、湿度、气压、紫外辐射四个指标，为人们的日常生活提供实时环境信息</p>
-<h3>穿戴设备展示: </h3>
-<img src="/img/projectImg/tag.png" class="Img" width="50%" height="50%">
-<h3>App展示: </h3>
-<div class="wrap">
-    <div class="my-slider">
-        <ul>
-            <li><img src="/img/projectImg/meteorTag1.jpg" class="Img" width="30%" height="30%" border="8"></li>
-            <li><img src="/img/projectImg/meteorTag2.jpg" class="Img" width="30%" height="30%" border="8"></li><li>
-            </li><li><img src="/img/projectImg/meteorTag3.jpg" class="Img" width="30%" height="30%" border="8"></li>
-            <li><img src="/img/projectImg/meteorTag4.jpg" class="Img" width="30%" height="30%" border="8"></li>
-        </ul>
-    </div>
-</div>
-<h3>App下载地址：</h3>
-<img src="/img/projectImg/appQR.jpg" width="30%" height="30%">
-
-<!-- There'll be a load of other stuff here -->
-<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
     $('.my-slider').unslider({
         infinite: true,
         autoplay: true,
@@ -105,10 +74,10 @@
             //   -> This isn't keyboard support.
             //  Either set true/false, or an object with the HTML
             //  elements for each arrow like below:
-            // arrows: {
-            //     prev: '<a class="' + self._ + '-arrow prev">Prev</a>',
-            //     next: '<a class="' + self._ + '-arrow next">Next</a>'
-            // },
+            arrows: {
+                prev: '<a class="' + self._ + '-arrow prev">Prev</a>',
+                next: '<a class="' + self._ + '-arrow next">Next</a>'
+            },
 
             //  How should Unslider animate?
             //  It can do one of the following types:
@@ -205,7 +174,7 @@
 
         self.setup = function() {
             //  Add a CSS hook to the main element
-            self.$context.addClass(self.prefix + self.options.animation).wrap('<div class="' + self._ + '" />');
+            self.$context.addClass(self.prefix + self.options.animation).wrap('<div class="' + self._ + '">');
             self.$parent = self.$context.parent('.' + self._);
 
             //  We need to manually check if the container is absolutely
@@ -266,7 +235,7 @@
 
         //  Set up our navigation
         self.initNav = function() {
-            var $nav = $('<nav class="' + self.prefix + 'nav"><ol /></nav>');
+            var $nav = $('<nav class="' + self.prefix + 'nav"><ol></ol></nav>');
 
             //  Build our click navigation item-by-item
             self.$slides.each(function(key) {
@@ -684,35 +653,4 @@
     };
 
 }));
-
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-</body>
-</html>
-</div></div><div id="disqus_thread"><script>var disqus_shortname = 'marvinme';
-var disqus_identifier = 'project/index.html';
-var disqus_title = '';
-var disqus_url = 'http://yoursite.com/project/index.html';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//marvinme.disqus.com/count.js" async></script></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/有趣/">有趣</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/朝夕/">朝夕</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/练习/">练习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Sublime/" style="font-size: 15px;">Sublime</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/朝夕/" style="font-size: 15px;">朝夕</a> <a href="/tags/language/" style="font-size: 15px;">language</a> <a href="/tags/MarkDown/" style="font-size: 15px;">MarkDown</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/22/LeetCode之链表/">LeetCode之链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/LeetCode解决方案之DataBase/">LeetCode解决方案之DataBase</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/MySQL排序/">MySQL排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/MySQL之分页/">MySQL之分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/25/哈哈哈/">哈哈哈</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/Scrapy模拟登录/">Scrapy模拟登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/Flask-Apache部署/">Flask-Apache部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/Sublime定制/">Sublime定制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/意外/">意外</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/11/Flask之旅/">Flask之旅</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//marvinme.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://omnilab.sjtu.edu.cn/" title="OMNILab" target="_blank">OMNILab</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">木欣欣然.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div>
